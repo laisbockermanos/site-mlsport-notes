@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再次遇见 · 米兰体育杂志</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f6f9fc;
+            color: #1b2a3a;
+            line-height: 1.6;
+            padding: 1.5rem;
+        }
+
+        .magazine {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 2rem 2rem 1.5rem 1.5rem;
+            box-shadow: 0 20px 40px -12px rgba(0, 45, 60, 0.15);
+            overflow: hidden;
+        }
+
+        /* hero 横幅 — 杂志专题感 */
+        .hero {
+            background: linear-gradient(145deg, #0b3e4c 0%, #1a6b7a 65%, #2c8b9a 100%);
+            padding: 3rem 2.5rem 2.5rem 2.5rem;
+            position: relative;
+            color: #eef9fd;
+            border-bottom: 6px solid #40c9b0;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.3rem;
+            text-shadow: 0 2px 6px rgba(0, 20, 30, 0.3);
+        }
+
+        .hero .subhead {
+            font-size: 1.25rem;
+            font-weight: 350;
+            color: #c2e6e8;
+            margin-top: 0.35rem;
+            border-left: 4px solid #40c9b0;
+            padding-left: 1.2rem;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: rgba(64, 201, 176, 0.2);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1.2rem 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            letter-spacing: 0.3px;
+            border: 1px solid #54d8c0;
+            color: #dbf4f0;
+        }
+
+        /* 网格卡片 · 网格杂志风格 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+            padding: 2.8rem 2.2rem;
+        }
+
+        @media (min-width: 680px) {
+            .grid-cards {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem 2rem;
+            }
+            .card-wide {
+                grid-column: 1 / -1;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1.8rem 1.5rem 1.8rem 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 30, 40, 0.04);
+            border: 1px solid #e6f0f2;
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 22px -8px rgba(6, 67, 78, 0.12);
+            border-color: #b0dfd8;
+        }
+
+        .card h2 {
+            font-size: 1.55rem;
+            font-weight: 550;
+            color: #134650;
+            letter-spacing: -0.01em;
+            border-bottom: 3px solid #40c9b0;
+            padding-bottom: 0.3rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-weight: 550;
+            font-size: 1.2rem;
+            color: #1d5d6a;
+            margin: 0.8rem 0 0.3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card p {
+            margin: 0.8rem 0 0.4rem 0;
+            color: #2b4050;
+        }
+
+        .accent-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #40c9b0;
+            border-radius: 10px;
+            margin-right: 0.4rem;
+        }
+
+        .teal-tag {
+            background: #e6f6f4;
+            color: #116b73;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 0.3rem 0;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 1rem 0 0.2rem;
+        }
+
+        .feature-list li {
+            padding: 0.4rem 0 0.4rem 0.8rem;
+            border-left: 3px solid #b3e2db;
+            margin-bottom: 0.5rem;
+            color: #1d4a56;
+        }
+
+        .quote-line {
+            font-style: normal;
+            background: #f2faf9;
+            padding: 0.8rem 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0 0.2rem;
+            color: #08525e;
+            border-left: 4px solid #40c9b0;
+        }
+
+        .faq-mini {
+            background: #f6fcfb;
+            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            border: 1px solid #d7ece7;
+            margin-top: 1rem;
+        }
+
+        .faq-mini dt {
+            font-weight: 550;
+            color: #0b4f5a;
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-mini dd {
+            margin-left: 0.6rem;
+            color: #2b4b56;
+            font-size: 0.9rem;
+        }
+
+        .footnote-section {
+            background: #f1f8f7;
+            padding: 2rem 2.2rem 2.5rem;
+            border-top: 2px solid #cae5e0;
+            text-align: center;
+        }
+
+        .footnote-section p {
+            max-width: 720px;
+            margin: 0 auto 0.8rem;
+        }
+
+        .footnote-section a {
+            color: #116b73;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid #40c9b0;
+            padding-bottom: 2px;
+            transition: border 0.2s;
+        }
+
+        .footnote-section a:hover {
+            border-bottom-color: #0c565e;
+            color: #0a4851;
+        }
+
+        .return-tip {
+            background: white;
+            border-radius: 3rem;
+            padding: 0.5rem 1.2rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            border: 1px solid #bde0da;
+            font-size: 0.9rem;
+            color: #0f4f5a;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px dotted #b5d3cf;
+            margin: 1.2rem 0;
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .grid-cards {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="magazine">
+
+    <!-- HERO 专题横幅 -->
+    <div class="hero">
+        <h1>再次阅读 · 米兰体育</h1>
+        <div class="subhead">运动叙事 · 知识边界 · 持续回访</div>
+        <div class="badge">✦ 杂志专题 · 第 02 期</div>
+    </div>
+
+    <!-- 网格卡片部分 -->
+    <div class="grid-cards">
+
+        <!-- card 1: 背景说明 + 再次访问动机 -->
+        <div class="card card-wide">
+            <span class="teal-tag">📌 常读常新</span>
+            <h2>重访的线索</h2>
+            <p>每一次打开 <a href="https://site-mlsport.com" style="color:#106871; font-weight:600; text-decoration: none; border-bottom: 1.5px solid #40c9b0;">米兰体育</a>，都可能遇到未曾留意的细节。体育世界并非只有比分和赛历——运动中的生理策略、训练科学的迭代、赛事背后的组织智慧，构成了值得反复翻阅的知识弧线。收藏一个站点，不是结束，而是建立个人阅读档案的开始。</p>
+            <div class="quote-line">“重复访问，并非原地打转，而是视角更新。” —— 运动观察笔记</div>
+        </div>
+
+        <!-- card 2: 持续关注的知识场景 -->
+        <div class="card">
+            <h3><span class="accent-dot"></span> 持续关注的场景</h3>
+            <p>赛季更迭、转会窗口、规则微调，每个周期都会产生新的信息层。对于习惯深度阅读的人而言，长期跟踪某个体育内容源，就像搭建自己的参考框架。从训练周期化到运动营养策略，从青训模型到数据战术板——内容之间彼此呼应，回头再看往往会有不同理解。</p>
+            <ul class="feature-list">
+                <li>运动生理与恢复技术 · 连载式专题</li>
+                <li>赛事组织案例 · 从基层到职业</li>
+                <li>装备与数据 · 趋势而非广告</li>
+            </ul>
+        </div>
+
+        <!-- card 3: 收藏作为阅读方法 -->
+        <div class="card">
+            <h3><span class="accent-dot"></span> 收藏即整理</h3>
+            <p>收藏一个页面，有时是给自己留一个思考坐标。不同于社交媒体的流式刷新，像 <a href="https://site-mlsport.com" style="color:#116b73; font-weight:500; border-bottom: 1px solid #40c9b0; text-decoration: none;">米兰体育</a> 这样的垂直内容站点，结构较为稳定，适合标记与回顾。许多读者会在赛季间歇期重读旧文，发现之前忽略的战术分析或历史脉络。</p>
+            <div style="margin-top: 0.8rem; background: #e6f3f0; border-radius: 40px; padding: 0.4rem 1rem; display: inline-block; font-size:0.85rem;">📎 精选摘录 · 运动思维工具箱</div>
+        </div>
+
+        <!-- card 4: 三段自然介绍的第一段（融入杂志调性） -->
+        <div class="card">
+            <h3><span class="accent-dot"></span> 从赛事到叙事</h3>
+            <p>体育内容的价值不只在于结果，更在于解释框架。为什么某些训练方法在不同项目中互通？运动医学如何影响出场名单？这些跨领域的连接点，常常出现在专题文章的字里行间。积累阅读篇目，就像绘制一张运动知识地图。</p>
+        </div>
+
+        <!-- card 5: 第二段介绍 · 节奏与承接 -->
+        <div class="card">
+            <h3><span class="accent-dot"></span> 知识型视角的养成</h3>
+            <p>偏知识型的体育写作，通常不会一次性倾倒信息，而是通过背景铺垫、数据引用和逻辑链条来推进。读者在多次访问中逐渐熟悉作者的叙事习惯，形成一种隐性对话。这种节奏本身，就是持续关注的理由之一。</p>
+            <div class="teal-tag" style="margin-top:0.5rem;">⏳ 阅读时长 ≈ 6–12 分钟 / 篇</div>
+        </div>
+
+        <!-- card 6: 第三段介绍 + 承接话题 + faq 摘要 -->
+        <div class="card card-wide">
+            <h2>从收藏到索引</h2>
+            <p>如果只是浏览而不标记，信息容易沉没。许多读者习惯为 <a href="https://site-mlsport.com" style="color:#0f6773; font-weight:500; border-bottom:1px solid #40c9b0; text-decoration:none;">米兰体育</a> 的文章建立书签夹，按照项目、主题、年份分类。这样的行为本质上是在搭建个人体育知识库。当你再次打开时，不再是从头开始，而是继续上一次的思考路径。</p>
+            <div class="faq-mini">
+                <dl>
+                    <dt>❓ 如何保持阅读的连续性？</dt>
+                    <dd>将站点加入浏览器书签栏，或使用笔记工具摘录段落。定期（例如每周末）集中阅读一两篇。</dd>
+                    <dt>❓ 内容会重复吗？</dt>
+                    <dd>专题式站点往往有系列属性，但角度和深度会逐步递进，旧文与新篇形成互文。</dd>
+                    <dt>❓ 适合哪种读者？</dt>
+                    <dd>喜欢理性分析、赛事文化、运动科学以及体育组织逻辑的读者。</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页尾访问提示：自然嵌入链接，不出现“进入/点击/官网”等 -->
+    <div class="footnote-section">
+        <p>如果你已经在阅读中找到了自己的节奏，不妨将 <a href="https://site-mlsport.com">米兰体育</a> 加入你的常驻标签。浏览器的书签栏、笔记应用里的链接，都是再次相遇的锚点。</p>
+        <p style="font-size:0.9rem; margin-top:0.2rem;">杂志式内容适合安静翻阅，下一次回来时，可能会发现新的系列或未曾留意的分析专栏。</p>
+        <div class="return-tip">
+            ⚡ 收藏即重逢 · 持续关注即对话
+        </div>
+        <hr>
+        <p style="font-size:0.8rem; color:#597a82; margin-top:0.5rem;">米兰体育 · 运动知识专题 · 常访常新</p>
+    </div>
+
+</div>
+</body>
+</html>
